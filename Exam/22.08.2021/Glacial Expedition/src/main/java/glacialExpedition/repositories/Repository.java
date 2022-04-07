@@ -1,9 +1,10 @@
 package glacialExpedition.repositories;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface Repository<T> {
-    Collection<T> getCollection();
+    List<T> getCollection();
 
     void add(T entity);
 
