@@ -2,27 +2,35 @@ package christmasRaces.repositories.interfaces;
 
 import christmasRaces.entities.drivers.Driver;
 
+import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 public class DriverRepository implements Repository<Driver>{
-    private Collection<Driver> models;
+    private Collection<Driver> drivers;
+    public DriverRepository(){
+        this.drivers = new ArrayList<>();
+    }
     @Override
     public Driver getByName(String name) {
-        return null;
+        return drivers.stream().filter(d -> d.getName().equals(name))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public Collection<Driver> getAll() {
-        return null;
+        return Collections.unmodifiableCollection(this.drivers);
     }
 
     @Override
     public void add(Driver model) {
-
+        this.drivers.add(model);
     }
 
     @Override
     public boolean remove(Driver model) {
-        return false;
+        return this.drivers.remove(model);
     }
 }

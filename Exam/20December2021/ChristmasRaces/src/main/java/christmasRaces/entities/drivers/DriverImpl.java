@@ -39,18 +39,16 @@ public class DriverImpl implements Driver{
 
     @Override
     public void addCar(Car car) {
-        if (car == null){
-            throw new IllegalArgumentException(CAR_INVALID);
-        }
+        this.car = car;
     }
 
     @Override
     public void winRace() {
-
+        this.numberOfWins++;
     }
 
     @Override
     public boolean getCanParticipate() {
-        return false;
+        return this.car != null;
     }
 }
